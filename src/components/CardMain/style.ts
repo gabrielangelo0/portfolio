@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div `
+export const MainContainer = styled.div`
     .card {
         background: var(--bg-cards);
 
@@ -134,4 +134,8 @@ export const MainContainer = styled.div `
             }
         }
     }
+`;
+
+export const Title = styled.h2`
+        font-size: 1.125rem;
 `;
