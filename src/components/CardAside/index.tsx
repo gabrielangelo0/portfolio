@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CardContainer } from "./style";
 
 export function CardAside () {
-    const [userInfo, setUserInfo] = useState([])
+    const [userInfo, setUserInfo] = useState<any>([])
 
     useEffect(() => {
         fetch('https://api.github.com/users/gabrielangelo0')
@@ -11,7 +11,7 @@ export function CardAside () {
             return response.json()})
         .then((result) => {
             setUserInfo(result)
-            console.log((result))
+            // console.log((result))
         })
             
         .catch((erro) => console.error(erro))
@@ -28,9 +28,9 @@ export function CardAside () {
                 return (
                     <> */}
                         <div className="cardProfile card">
-                        <img src="https://avatars.githubusercontent.com/u/102261788?v=4"></img>
-                        <h2>Gabriel Angelo</h2>
-                        <small>Front end Developer</small>
+                            <img src={userInfo.avatar_url} alt="Imagem avatar" />
+                        <h2>{userInfo.name}</h2>
+                        <small>Roler</small>
                     </div>
                     <div className="informationsCard card">
                         <ul>
