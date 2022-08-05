@@ -11,7 +11,7 @@ export function CardAside () {
             return response.json()})
         .then((result) => {
             setUserInfo(result)
-            // console.log((result))
+            console.log((result))
         })
             
         .catch((erro) => console.error(erro))
@@ -22,36 +22,31 @@ export function CardAside () {
     return (
         <CardContainer>
             <>
-
-            {/* {userInfo.map((item) =>{ return (<p>{item}</p>) })} */}
-            {/* {userInfo.map((itens) => {
-                return (
-                    <> */}
                         <div className="cardProfile card">
                             <img src={userInfo.avatar_url} alt="Imagem avatar" />
                         <h2>{userInfo.name}</h2>
-                        <small>Roler</small>
+                        <small>{userInfo.bio}</small>
                     </div>
                     <div className="informationsCard card">
                         <ul>
                             <li><MapPin size={20} color="#837E9F" /></li>
-                            <li>Brasil</li>
+                            <li>{userInfo.location}</li>
                         </ul>
                         <ul>
                             <li><Buildings size={20} color="#837E9F" /></li>
-                            <li>Coreplan</li>
+                            <li>{userInfo.company}</li>
                         </ul>
                         <ul>
                             <li><GithubLogo size={20} color="#837E9F" /></li>
-                            <li>gabrielangelo0</li>
+                            <li>{userInfo.login}</li>
                         </ul>
                         <ul>
                             <li><LinkedinLogo size={20} color="#837E9F" /></li>
-                            <li>gabrielangelo0</li>
+                            <li>{userInfo.login}</li>
                         </ul>
                         <ul>
                             <li><Envelope size={20} color="#837E9F" /></li>
-                            <li>gabrielangelolira@gmail.com</li>
+                            <li>{userInfo.twitter_username}</li>
                         </ul>
                     </div>
                     <div className="skills card">
@@ -61,29 +56,14 @@ export function CardAside () {
                         <ul>
                             <li>JAVASCRIPT</li>
                             <li>REACTJS</li>
-                            <li>NODEJS</li>
                             <li>GIT</li>
                             <li>GITHUB</li>
                             <li>HTML</li>
                             <li>CSS</li>
-                            <li>ELIXIR</li>
-                            <li>REACT NATIVE</li>
                         </ul>
                     </div>
-                    {/* </>
-                )
-            })} */}
             </>
 
-
-
-            {/* <ul>
-                {userInfo.map(item => 
-                    
-                        <li>{item}</li>
-                    
-                )}
-            </ul> */}
         </CardContainer>
     )
 }

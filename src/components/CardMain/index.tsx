@@ -1,3 +1,5 @@
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { Folder, Star } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { MainContainer, Title } from "./style";
@@ -5,6 +7,7 @@ import { MainContainer, Title } from "./style";
 interface Props {
     name?: string;
     description?: string;
+    created_at: Date;
 }
 
 interface ArrayProps {
@@ -14,6 +17,10 @@ interface ArrayProps {
 export function CardMain({ name, description }: Props) {
     const [informations, setInformations] = useState<ArrayProps[]>([])
     const [last, setLast] = useState<any>([''])
+    const result = formatDistanceToNow(
+        new Date(2022, 7),
+        {addSuffix: true, locale: ptBR}
+        )
 
     useEffect(() => {
         fetch('https://api.github.com/users/gabrielangelo0/repos')
@@ -22,6 +29,7 @@ export function CardMain({ name, description }: Props) {
             })
             .then((result) => {
                 setInformations(result)
+                // console.log(result)
             })
             .catch((Error) => console.error(Error))
     }, [])
@@ -46,42 +54,40 @@ export function CardMain({ name, description }: Props) {
             </div>
             <div className="recentProjects">
 
-                {informations.map((info: any, key: number) => {
-                    return (
+                {informations.map((info: any, key: any) => {
+                    return ( 
                         <div className="recentList card">
-                            <header>
+                            <header key={key.id}>
                                 <Folder size={20} color="#837E9F" />
-                                <h2 key={key}>{info.name}</h2>
+                                <h2>{info.name}</h2>
                             </header>
-                            <main>
+                            <main key={key.description}>
                                 <p>{info.description}</p>
                             </main>
                             <footer>
                                 <div className="itemsLeft">
                                     <div className="styledItems">
                                         <Star size={20} color="#837E9F" />
-                                        <p>100</p>
+                                        <p>{info.stargazers_count}</p>
                                     </div>
                                     <div className="styledItems">
                                         <Star size={20} color="#837E9F" />
-                                        <p>100</p>
+                                        <p>{info.size}</p>
                                     </div>
                                 </div>
                                 <div className="itemsRight">
                                     <span></span>
-                                    <p>Typescript</p>
+                                    <p>{info.language}</p>
                                 </div>
                             </footer>
                         </div>
-                    )
-                })}
+                // })
+                )})} 
             </div>
 
             <div className="recentPost card">
                 <h2>Recent Posts</h2>
             </div>
-            {/* {last.map((item: any) => {
-                        return ( */}
             <div className="miniList">
                 <div className="recentItem card">
                     <div className="avatar">
@@ -90,7 +96,7 @@ export function CardMain({ name, description }: Props) {
                     <div className="infoSection">
                         <header>
                             <h2>{last.name}</h2>
-                            <time title={last.created_at}>há 2 anos atrás</time>
+                            <time title={last.created_at}>{result}</time>
                         </header>
                         <section>
                             <p>{last.description}</p>
@@ -98,15 +104,12 @@ export function CardMain({ name, description }: Props) {
                                 <p>#react-native</p>
                                 <p>#genimotion</p>
                                 <p>#react-native</p>
-                                <p>#react-native</p>
+                                <p>#react-natives</p>
                             </div>
                         </section>
                     </div>
                 </div>
             </div>
-
-            {/* )
-                    })} */}
         </MainContainer>
     )
 }

@@ -120,12 +120,19 @@ export const MainContainer = styled.div`
     }
 
     @media (max-width: 768px) {
+        .miniList {
+            display: flex;
+            flex-direction: column;
+        }
         .recentProjects {
             grid-template-columns: 1fr;
             gap: 0;
         }
         .recentItem {
-            grid-template-columns: 1fr;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: space-between;
 
             .avatar {
                 img {
