@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div `
+export const MainContainer = styled.div`
     .card {
         background: var(--bg-cards);
 
@@ -120,12 +120,19 @@ export const MainContainer = styled.div `
     }
 
     @media (max-width: 768px) {
+        .miniList {
+            display: flex;
+            flex-direction: column;
+        }
         .recentProjects {
             grid-template-columns: 1fr;
             gap: 0;
         }
         .recentItem {
-            grid-template-columns: 1fr;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: space-between;
 
             .avatar {
                 img {
@@ -134,4 +141,8 @@ export const MainContainer = styled.div `
             }
         }
     }
+`;
+
+export const Title = styled.h2`
+        font-size: 1.125rem;
 `;

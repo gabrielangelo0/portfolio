@@ -18,7 +18,5 @@ export const GlobalStyles = createGlobalStyle`
         background: var(--body-bg-color);
         color: var(--text-color);
     }
-    h2 {
-        font-size: 1.125rem;
-    }
+   
 `;

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CardContainer } from "./style";
 
 export function CardAside () {
-    const [userInfo, setUserInfo] = useState([])
+    const [userInfo, setUserInfo] = useState<any>([])
 
     useEffect(() => {
         fetch('https://api.github.com/users/gabrielangelo0')
@@ -22,36 +22,31 @@ export function CardAside () {
     return (
         <CardContainer>
             <>
-
-            {/* {userInfo.map((item) =>{ return (<p>{item}</p>) })} */}
-            {/* {userInfo.map((itens) => {
-                return (
-                    <> */}
                         <div className="cardProfile card">
-                        <img src="https://avatars.githubusercontent.com/u/102261788?v=4"></img>
-                        <h2>Gabriel Angelo</h2>
-                        <small>Front end Developer</small>
+                            <img src={userInfo.avatar_url} alt="Imagem avatar" />
+                        <h2>{userInfo.name}</h2>
+                        <small>{userInfo.bio}</small>
                     </div>
                     <div className="informationsCard card">
                         <ul>
                             <li><MapPin size={20} color="#837E9F" /></li>
-                            <li>Brasil</li>
+                            <li>{userInfo.location}</li>
                         </ul>
                         <ul>
                             <li><Buildings size={20} color="#837E9F" /></li>
-                            <li>Coreplan</li>
+                            <li>{userInfo.company}</li>
                         </ul>
                         <ul>
                             <li><GithubLogo size={20} color="#837E9F" /></li>
-                            <li>gabrielangelo0</li>
+                            <li>{userInfo.login}</li>
                         </ul>
                         <ul>
                             <li><LinkedinLogo size={20} color="#837E9F" /></li>
-                            <li>gabrielangelo0</li>
+                            <li>{userInfo.login}</li>
                         </ul>
                         <ul>
                             <li><Envelope size={20} color="#837E9F" /></li>
-                            <li>gabrielangelolira@gmail.com</li>
+                            <li>{userInfo.twitter_username}</li>
                         </ul>
                     </div>
                     <div className="skills card">
@@ -61,29 +56,14 @@ export function CardAside () {
                         <ul>
                             <li>JAVASCRIPT</li>
                             <li>REACTJS</li>
-                            <li>NODEJS</li>
                             <li>GIT</li>
                             <li>GITHUB</li>
                             <li>HTML</li>
                             <li>CSS</li>
-                            <li>ELIXIR</li>
-                            <li>REACT NATIVE</li>
                         </ul>
                     </div>
-                    {/* </>
-                )
-            })} */}
             </>
 
-
-
-            {/* <ul>
-                {userInfo.map(item => 
-                    
-                        <li>{item}</li>
-                    
-                )}
-            </ul> */}
         </CardContainer>
     )
 }
